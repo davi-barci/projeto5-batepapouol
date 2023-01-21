@@ -1,5 +1,27 @@
 let nome;
 let statusOnline;
+let textoObj;
+
+function mensagemNegada(){
+    window.location.reload();
+}
+
+function mensagemEnviada(){
+    getMensagens();
+}
+
+function enviarMensagem(){
+    const input = document.querySelector("#texto");
+    if (input.value.trim() !== ""){
+        textoObj = {from: nome, to: "Todos", text: input.value, type: "message"};
+
+        const requisicao = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", textoObj);
+        requisicao.then(mensagemEnviada);
+        requisicao.catch(mensagemNegada);
+
+        input.value = "";
+    }
+}
 
 function usuarioOnline(){
     statusOnline = new Date();
@@ -7,7 +29,7 @@ function usuarioOnline(){
 }
 
 function usuarioOffline(){
-    document.location.reload();
+    window.location.reload();
 }
 
 function verificarStatus(){
@@ -19,7 +41,7 @@ function verificarStatus(){
 }
 
 function falhaMensagens(){
-    document.location.reload();
+    window.location.reload();
 }
 
 function sucessoMensagens(resposta) {
