@@ -25,8 +25,8 @@
     <div class="container-mensagens"></div>
 
     <div class="enviar-mensagem">
-        <input id="texto" placeholder="Escreva aqui..."/>
-        <ion-icon name="paper-plane-outline" onclick="enviarMensagem();"></ion-icon>
+        <input id="texto" data-test="input-message" placeholder="Escreva aqui..."/>
+        <ion-icon name="paper-plane-outline" data-test="send-message" onclick="enviarMensagem();"></ion-icon>
     </div>
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

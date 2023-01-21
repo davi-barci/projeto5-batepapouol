@@ -54,16 +54,19 @@ function sucessoMensagens(resposta) {
         if (lista[i].type === "status"){
             mensagemAtual = document.createElement("div");
             mensagemAtual.classList.add("mensagens-status");
+            mensagemAtual.setAttribute("data-test", "message");
             mensagemAtual.innerHTML = `<p><span>(${lista[i].time})</span>&nbsp;<b>${lista[i].from}</b>&nbsp;${lista[i].text}</p>`
             containerMensagens.appendChild(mensagemAtual);
         }else if (lista[i].type === "message"){
             mensagemAtual = document.createElement("div");
             mensagemAtual.classList.add("mensagens");
+            mensagemAtual.setAttribute("data-test", "message");
             mensagemAtual.innerHTML = `<p><span>(${lista[i].time})</span>&nbsp;<b>${lista[i].from}&nbsp;</b>para&nbsp;<b>${lista[i].to}&nbsp;</b>: ${lista[i].text}</p>`
             containerMensagens.appendChild(mensagemAtual);
         }else if (lista[i].type === "private_message" && lista[i].to === nome){
             mensagemAtual = document.createAttribute("div");
             mensagemAtual.classList.add("mensagens-reservadas");
+            mensagemAtual.setAttribute("data-test", "message");
             mensagemAtual.innerHTML = `<p><span>(${lista[i].time})</span>&nbsp;<b>${lista[i].from}&nbsp;</b>reservadamente para<b>&nbsp;${lista[i].to}</b>: ${lista[i].text}</p>`
             containerMensagens.appendChild(mensagemAtual);
         }
