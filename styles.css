@@ -11,6 +11,59 @@ b{
     font-weight: 700;
 }
 
+.tela-entrada{
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 4;
+}
+
+.tela-entrada img{
+    width: 130px;
+    height: 92px;
+    margin: 72px auto 94px auto;
+    display: block;
+}
+
+.tela-entrada input{
+    width: 261px;
+    height: 54px;
+    background-color: #FFFFFF;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    display: block;
+    margin: 0px auto 15px auto;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+}
+
+.tela-entrada input::placeholder{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #AEAEAE;
+}
+
+.tela-entrada button{
+    width: 109px;
+    height: 45px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    background-color: #E7E7E7;
+    color: #696969;
+    display: block;
+    margin: 0px auto;
+    border: none;
+    border-radius: 9px;
+}
+
 .topo{
     width: 100%;
     height: 80px;

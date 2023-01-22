@@ -169,7 +169,9 @@ function getMensagens(){
 }
 
 function sucessoLogin(resposta) {
-	console.log(resposta.data);
+	const telaEntrada = document.querySelector(".tela-entrada");
+    telaEntrada.classList.add("disable");
+
     getMensagens();
     getUsers();
     setInterval(verificarStatus, 5000);
@@ -180,11 +182,12 @@ function sucessoLogin(resposta) {
 function loginNegado(erro){
     console.log("Status code: " + erro.response.status); 
 	console.log("Mensagem de erro: " + erro.response.data);
-    fazerLogin("Usuário já se encontra logado, tente outro nome...");
+    window.location.reload();
 }
 
-function fazerLogin(msg){
-    nome = prompt(msg);
+function fazerLogin(){
+    const inputEntrada = document.querySelector(".tela-entrada input");
+    nome = inputEntrada.value;
     const nomeObj = {name: nome};
 
     const requisicao = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeObj);
@@ -193,4 +196,3 @@ function fazerLogin(msg){
 }
 
 
-fazerLogin("Digite seu nome para realizar o login");
