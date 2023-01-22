@@ -19,14 +19,23 @@
 <body>
     <div class="topo">
         <img src="imagens/logo-uol.png"/>
-        <ion-icon name="people"></ion-icon>
+        <ion-icon name="people" onclick="exibirMenuLateral();"></ion-icon>
     </div>
 
     <div class="container-mensagens"></div>
 
     <div class="enviar-mensagem">
-        <input id="texto" data-test="input-message" placeholder="Escreva aqui..."/>
+        <div>
+            <input id="texto" data-test="input-message" placeholder="Escreva aqui..."/>
+            <p></p>
+        </div>
         <ion-icon name="paper-plane-outline" data-test="send-message" onclick="enviarMensagem();"></ion-icon>
+    </div>
+
+    <div class="tela-participantes disable">
+        <div onclick="exibirMenuLateral();"></div>
+        <div>
+        </div>
     </div>
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
