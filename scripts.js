@@ -25,23 +25,23 @@ function sucessoParticipantes(resposta){
     telaParticipantes.innerHTML = "";
     telaParticipantes.innerHTML += "<p class='titulo'>Escolha um contato<br> para enviar mensagem:</p>";
     if (participanteAtual === ""){
-        telaParticipantes.innerHTML += `<div class='participantes-ativos selecionado' onclick='selecionarOpcoes("participante", "");'> <ion-icon name='people'></ion-icon> <p>Todos</p> <ion-icon name='checkmark-sharp'></ion-icon> </div>`;
+        telaParticipantes.innerHTML += `<div class='participantes-ativos selecionado' onclick='selecionarOpcoes("participante", "");' data-test='all'> <ion-icon name='people'></ion-icon> <p>Todos</p> <ion-icon name='checkmark-sharp' data-test='check'></ion-icon> </div>`;
         textoMsg += "Todos";
         destinatario = "Todos";
         visibilidadeAtual = "Publico";
         visibilidadeMsg = "message";
     }else{
-        telaParticipantes.innerHTML += `<div class='participantes-ativos' onclick='selecionarOpcoes("participante", "");'> <ion-icon name='people'></ion-icon> <p>Todos</p> <ion-icon name='checkmark-sharp'></ion-icon> </div>`;
+        telaParticipantes.innerHTML += `<div class='participantes-ativos' onclick='selecionarOpcoes("participante", "");' data-test='all'> <ion-icon name='people'></ion-icon> <p>Todos</p> <ion-icon name='checkmark-sharp' data-test='check'></ion-icon> </div>`;
     }
 
 
     for (let i = 0; i < participantes.length; i++){
         if (participantes[i].name !== nome && participantes[i].name == participanteAtual){
-            telaParticipantes.innerHTML += `<div class='participantes-ativos selecionado' onclick='selecionarOpcoes("participante", "${participantes[i].name}");'> <ion-icon name='person-circle'></ion-icon> <p> ${participantes[i].name} </p>  <ion-icon name='checkmark-sharp'></ion-icon> </div>`;
+            telaParticipantes.innerHTML += `<div class='participantes-ativos selecionado' onclick='selecionarOpcoes("participante", "${participantes[i].name}");' data-test='participant'> <ion-icon name='person-circle'></ion-icon> <p> ${participantes[i].name} </p>  <ion-icon name='checkmark-sharp' data-test='check'></ion-icon> </div>`;
             textoMsg += participantes[i].name;
             destinatario = participantes[i].name;
         }else if(participantes[i].name !== nome){
-            telaParticipantes.innerHTML += `<div class='participantes-ativos' onclick='selecionarOpcoes("participante", "${participantes[i].name}");'> <ion-icon name='person-circle'></ion-icon> <p> ${participantes[i].name} </p>  <ion-icon name='checkmark-sharp'></ion-icon> </div>`;
+            telaParticipantes.innerHTML += `<div class='participantes-ativos' onclick='selecionarOpcoes("participante", "${participantes[i].name}");' data-test='participant'> <ion-icon name='person-circle'></ion-icon> <p> ${participantes[i].name} </p>  <ion-icon name='checkmark-sharp' data-test='check'></ion-icon> </div>`;
         }
     }
 
@@ -59,12 +59,12 @@ function sucessoParticipantes(resposta){
 
     telaParticipantes.innerHTML += "<p class='titulo'>Escolha a visibilidade:</p>";
     if (visibilidadeAtual === "Publico"){
-        telaParticipantes.innerHTML += `<div class='opcao-visibilidade selecionado' onclick='selecionarOpcoes("visibilidade", "Publico");'> <ion-icon name='lock-open'></ion-icon> <p>Público</p> <ion-icon name='checkmark-sharp'></ion-icon>  </div>`;
-        telaParticipantes.innerHTML += `<div class='opcao-visibilidade' onclick='selecionarOpcoes("visibilidade", "Reservado");'> <ion-icon name='lock-closed'></ion-icon> <p>Reservadamente</p> <ion-icon name='checkmark-sharp'></ion-icon> </div>`;
+        telaParticipantes.innerHTML += `<div class='opcao-visibilidade selecionado' onclick='selecionarOpcoes("visibilidade", "Publico");' data-test='public'> <ion-icon name='lock-open'></ion-icon> <p>Público</p> <ion-icon name='checkmark-sharp' data-test='check'></ion-icon>  </div>`;
+        telaParticipantes.innerHTML += `<div class='opcao-visibilidade' onclick='selecionarOpcoes("visibilidade", "Reservado");' data-test='private'> <ion-icon name='lock-closed'></ion-icon> <p>Reservadamente</p> <ion-icon name='checkmark-sharp' data-test='check'></ion-icon> </div>`;
         visibilidadeMsg = "message";
     }else{
-        telaParticipantes.innerHTML += `<div class='opcao-visibilidade' onclick='selecionarOpcoes("visibilidade", "Publico");'> <ion-icon name='lock-open'></ion-icon> <p>Público</p> <ion-icon name='checkmark-sharp'></ion-icon>  </div>`;
-        telaParticipantes.innerHTML += `<div class='opcao-visibilidade selecionado' onclick='selecionarOpcoes("visibilidade", "Reservado");'> <ion-icon name='lock-closed'></ion-icon> <p>Reservadamente</p> <ion-icon name='checkmark-sharp'></ion-icon> </div>`;
+        telaParticipantes.innerHTML += `<div class='opcao-visibilidade' onclick='selecionarOpcoes("visibilidade", "Publico");' data-test='public'> <ion-icon name='lock-open'></ion-icon> <p>Público</p> <ion-icon name='checkmark-sharp' data-test='check'></ion-icon>  </div>`;
+        telaParticipantes.innerHTML += `<div class='opcao-visibilidade selecionado' onclick='selecionarOpcoes("visibilidade", "Reservado");' data-test='private'> <ion-icon name='lock-closed'></ion-icon> <p>Reservadamente</p> <ion-icon name='checkmark-sharp' data-test='check'></ion-icon> </div>`;
         textoMsg += " (reservadamente)"
         visibilidadeMsg = "private_message"; 
     }
@@ -109,6 +109,12 @@ function enviarMensagem(){
         input.value = "";
     }
 }
+
+document.addEventListener('keypress', function(e){
+    if(e.key == 'Enter'){
+      enviarMensagem();
+    }
+  }, false);
 
 function usuarioOnline(){
     statusOnline = new Date();

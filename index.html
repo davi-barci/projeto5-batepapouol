@@ -19,13 +19,13 @@
 <body>
     <div class="tela-entrada">
         <img src="imagens/logo-uol.png"/>
-        <input placeholder="Digite seu nome"/>
-        <button onclick="fazerLogin();">Entrar</button>
+        <input placeholder="Digite seu nome" data-test="input-name"/>
+        <button onclick="fazerLogin();" data-test="send-name">Entrar</button>
     </div>
 
     <div class="topo">
         <img src="imagens/logo-uol.png"/>
-        <ion-icon name="people" onclick="exibirMenuLateral();"></ion-icon>
+        <ion-icon name="people" onclick="exibirMenuLateral();" data-test="open-participants"></ion-icon>
     </div>
 
     <div class="container-mensagens"></div>
@@ -33,13 +33,13 @@
     <div class="enviar-mensagem">
         <div>
             <input id="texto" data-test="input-message" placeholder="Escreva aqui..."/>
-            <p></p>
+            <p data-test="recipient"></p>
         </div>
         <ion-icon name="paper-plane-outline" data-test="send-message" onclick="enviarMensagem();"></ion-icon>
     </div>
 
     <div class="tela-participantes disable">
-        <div onclick="exibirMenuLateral();"></div>
+        <div onclick="exibirMenuLateral();" data-test="overlay"></div>
         <div>
         </div>
     </div>
