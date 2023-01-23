@@ -200,20 +200,20 @@ function getMensagens(){
 function sucessoLogin() {
     const telaEntrada = document.querySelector(".tela-entrada");
     telaEntrada.classList.add("disable");
-    let timeInterval = 5000;
+    let timeIntervalStatus = 5000;
+    let timeIntervalMsg = 3000;
+    let timeIntervalUsers = 10000;
 
     getMensagens();
     getUsers();
-    setInterval(verificarStatus, timeInterval);
-    timeInterval = 3000;
-    setInterval(getMensagens, timeInterval);
-    timeInterval = 10000;
-    setInterval(getUsers, timeInterval);
+    setInterval(verificarStatus, timeIntervalStatus);
+    setInterval(getMensagens, timeIntervalMsg);
+    setInterval(getUsers, timeIntervalUsers);
 }
 
 function loginNegado(erro){
     console.log("Status code: " + erro.response.status);
-	console.log("Mensagem de erro: " + erro.response.data);
+    console.log("Mensagem de erro: " + erro.response.data);
     window.location.reload();
 }
 

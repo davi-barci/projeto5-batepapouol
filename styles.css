@@ -245,6 +245,11 @@ b{
     position: relative;
 }
 
+.participantes-ativos:hover,
+.opcao-visibilidade:hover{
+    cursor: default;
+}
+
 .participantes-ativos>ion-icon:nth-of-type(1),
 .opcao-visibilidade>ion-icon:nth-of-type(1){
     width: 25px;
